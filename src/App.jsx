@@ -1,21 +1,33 @@
-import { Route, Routes } from 'react-router-dom';
-import Navbar from "./Components/Navbar";
-import { Container } from 'react-bootstrap';
-import Shop from './pages/Shop';
-import Success from './pages/Success';
-import { CartProvider } from './Context/CartContext';
+// src/App.jsx
+
+import React, { Suspense } from 'react'; 
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import Success from './pages/Success'; 
+
+const ShopPage = React.lazy(() => import('./pages/Shop')); 
 
 function App() {
   return (
-    <CartProvider>
+    <>
       <Navbar />
-      <Container className="mb-5 py-4">
-        <Routes>
-          <Route path='/' element={<Shop />} />
-          <Route path='/success' element={<Success />} />
-        </Routes>
-      </Container>
-    </CartProvider>
+      
+      <div className="container py-5">
+        <Suspense fallback={
+          <div className="text-center py-5">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            <h5 className="text-muted mt-3">در حال بارگذاری فروشگاه...</h5>
+          </div>
+        }>
+          <Routes>
+            <Route path="/" element={<ShopPage />} /> 
+            <Route path="/success" element={<Success />} />
+          </Routes>
+        </Suspense>
+      </div>
+    </>
   );
 }
 

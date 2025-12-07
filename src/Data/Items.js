@@ -1,3 +1,5 @@
+// src/Data/Items.js
+
 const productList = [
   {
     id: "1",
@@ -44,14 +46,13 @@ const productList = [
   {
     id: "8",
     title: "Airpod",
-    price: 8750000,
-    image: "/image/airpod.jpg.jpg",
+    price: 45000000,
+    image: "/public/image/airpod.jpg.jpg",
   },
 ];
 
 function getProductData(id) {
-  let productData = productList.find((item) => item.id === id);
-
+  const productData = productList.find((product) => product.id === id);
   return productData;
 }
 

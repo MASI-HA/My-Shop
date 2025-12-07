@@ -1,18 +1,27 @@
-import { Row, Col } from "react-bootstrap";
+// src/pages/Shop.jsx
+
+import { Row, Col, Container } from "react-bootstrap";
 import ProductItem from "../Components/ProductItem";
-import { productList } from "../Data/Items"; //
+import { productList } from "../Data/Items";
 
 function Shop() {
   return (
-    // xs=1 (موبایل), sm=2 (تبلت کوچک), md=3 (تبلت بزرگ), lg=4 (دسکتاپ)
-    <Row xs={1} sm={2} md={3} lg={4} className="g-4"> 
-      {productList.map((item) => (
-        // برای نمایش ۴ ستون در lg و md و...، Col باید 3 واحد از 12 واحد را اشغال کند
-        <Col xs={12} sm={6} md={4} lg={3} align="center" key={item.id}>
-          <ProductItem product={item} />
-        </Col>
-      ))}
-    </Row>
+    <Container>
+      <div className="mb-5 text-center">
+        <h1 className="text-white mb-3">فروشگاه My.Shop</h1>
+        <p className="text-sec">
+          بهترین محصولات با کیفیت عالی را از ما بخواهید
+        </p>
+      </div>
+      
+      <Row xs={1} sm={2} md={3} lg={4} className="g-4">
+        {productList.map((item) => (
+          <Col key={item.id}>
+            <ProductItem product={item} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 

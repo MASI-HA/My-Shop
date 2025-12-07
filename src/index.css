@@ -1,3 +1,5 @@
+/* src/index.css - نسخه نهایی و بهینه‌شده */
+
 :root {
   --bg-dark: #050505;
   --bg-card: #141414;
@@ -6,9 +8,9 @@
   --border-light: #444444;
   --text-main: #ffffff;
   --text-secondary: #a1a1aa;
-  --accent: #3b82f6; /* رنگ آبی اصلی: برای تکمیل خرید، لینک، success alert */
+  --accent: #3b82f6; /* آبی اصلی */
   --accent-hover: #2563eb;
-  --danger: #ef4444; /* قرمز: برای حذف و error alert */
+  --danger: #ef4444; /* قرمز */
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
   --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -30,7 +32,18 @@ body {
   min-height: 100vh;
 }
 
-/* Navbar */
+/* --- Utilities --- */
+.text-main {
+  color: var(--text-main) !important;
+}
+.text-sec {
+  color: var(--text-secondary) !important;
+}
+.text-primary {
+  color: var(--accent) !important;
+}
+
+/* --- Navbar (هدر شیشه‌ای مات) --- */
 .navbar-glass {
   background: rgba(20, 20, 20, 0.8) !important;
   border-bottom: 1px solid var(--border) !important;
@@ -42,12 +55,20 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Buttons --- */
-.btn {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+.navbar-brand-clickable {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.navbar-brand-clickable:hover {
+  opacity: 0.8;
 }
 
-/* استایل دکمه اصلی و مدرن (برای دکمه لغو و سایر اقدامات ثانویه) */
+/* --- Buttons --- */
+.btn {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* دکمه مدرن عمومی */
 .btn-modern {
   background: var(--bg-card) !important;
   border: 1px solid var(--border) !important;
@@ -62,84 +83,95 @@ body {
   position: relative;
   overflow: hidden;
 }
-
 .btn-modern:hover {
   background: var(--bg-card-hover) !important;
   border-color: var(--accent) !important;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
 }
-
 .btn-modern:active {
   transform: translateY(0) scale(0.98) !important;
   box-shadow: none !important;
 }
 
-/* دکمه اصلی (آبی) - برای تکمیل خرید، تأییدها و اقدامات اصلی */
+/* دکمه اصلی (آبی) */
 .btn-primary-custom {
-    background-color: var(--accent) !important;
-    border-color: var(--accent) !important;
-    color: var(--text-main) !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--text-main) !important;
 }
 .btn-primary-custom:hover {
-    background-color: var(--accent-hover) !important;
-    border-color: var(--accent-hover) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
 }
 
-/* دکمه خطر (قرمز) - برای حذف از سبد */
+/* دکمه خطر (قرمز) */
 .btn-danger-custom {
-    border-color: rgba(239, 68, 68, 0.5) !important;
-    background: transparent !important;
+  border-color: rgba(239, 68, 68, 0.5) !important;
+  background: transparent !important;
 }
 .btn-danger-custom:hover {
-    border-color: var(--danger) !important;
-    color: var(--danger) !important;
-    background: rgba(239, 68, 68, 0.05) !important;
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+  background: rgba(239, 68, 68, 0.05) !important;
 }
 
-/* دکمه اکشن ثانویه (Outline/Ghost Style) - برای "افزودن به سبد" */
+/* دکمه افزودن به سبد */
 .btn-secondary-action {
-    background-color: transparent !important; 
-    border: 1px solid var(--border-light) !important; 
-    color: var(--text-main) !important;
-    padding: 0.6rem 1.25rem; 
-    border-radius: 10px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent !important;
+  border: 1px solid var(--border-light) !important;
+  color: var(--text-main) !important;
+  padding: 0.6rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .btn-secondary-action:hover {
-    background-color: rgba(59, 130, 246, 0.1) !important;
-    border-color: var(--accent) !important;
-    color: var(--text-main) !important; 
-    transform: translateY(-3px); 
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.15);
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  border-color: var(--accent) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.15);
 }
 
-
-/* دکمه‌های کوچک کنترل تعداد (+ و -) */
+/* دکمه‌های کنترل تعداد */
 .btn-count {
-    background: transparent !important;
-    border: none !important;
-    color: var(--text-secondary) !important;
-    padding: 0.5rem !important;
-    transition: color 0.2s, transform 0.1s;
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-secondary) !important;
+  padding: 0.5rem !important;
+  transition: color 0.2s, transform 0.1s;
 }
-
 .btn-count:hover {
-    color: var(--accent) !important;
-    transform: scale(1.1);
+  color: var(--accent) !important;
+  transform: scale(1.1);
 }
 .btn-count:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+/* لینک حذف در سبد خرید */
+.btn-remove-cart {
+  background: transparent !important;
+  border: none !important;
+  color: var(--danger) !important;
+  padding: 0 !important;
+  font-size: 0.85rem !important;
+  text-decoration: none !important;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.btn-remove-cart:hover {
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 /* --- Product Card --- */
@@ -152,14 +184,12 @@ body {
   height: 100%;
   position: relative;
 }
-
 .custom-card:hover {
   background: var(--bg-card-hover) !important;
   border-color: var(--accent) !important;
   transform: translateY(-10px) scale(1.02);
   box-shadow: var(--shadow-hover), 0 0 20px rgba(59, 130, 246, 0.25) !important;
 }
-
 .card-img-top {
   width: 100%;
   height: 220px;
@@ -167,21 +197,22 @@ body {
   transition: transform 0.5s ease;
   background-color: #1a1a1a;
 }
-
 .custom-card:hover .card-img-top {
   transform: scale(1.05);
 }
-
 .card-body {
-    padding: 1.5rem !important;
+  padding: 1.5rem !important;
 }
 
-/* --- Cart Modal & Glass Effects --- */
+/* --- Cart Modal & Items --- */
 .modal-content {
   background: #111111 !important;
   border: 1px solid var(--border) !important;
   border-radius: 16px !important;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+.modal-header {
+  border-bottom: 1px solid var(--border) !important;
 }
 
 .glass-row {
@@ -192,18 +223,30 @@ body {
   margin-bottom: 0.75rem;
   transition: background 0.2s ease-out;
 }
-
 .glass-row:hover {
-    background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-.modal-header {
-  border-bottom: 1px solid var(--border) !important;
+.cart-item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+.cart-item-title {
+  font-size: 0.95rem;
+  line-height: 1.3;
 }
 
 /* --- Success Page --- */
 .success-page {
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 100%);
+  background: radial-gradient(
+    circle at center,
+    #1a1a1a 0%,
+    var(--bg-dark) 100%
+  );
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -212,22 +255,25 @@ body {
 }
 
 .success-card {
-  background: rgba(20, 20, 20, 0.6);
+  background: rgba(30, 30, 30, 0.85);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 3rem 2rem;
   text-align: center;
-  max-width: 450px;
+  max-width: 480px;
   width: 100%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
   animation: fadeInUp 0.6s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .success-icon {
   width: 90px;
   height: 90px;
-  background: linear-gradient(135deg, var(--accent), #1d4ed8);
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -236,577 +282,342 @@ body {
   color: white;
   font-size: 2.5rem;
   box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-  
-  /* انیمیشن جدید: پرش و درخشش */
-  animation: iconScaleBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
-             backgroundGlow 2s ease-out infinite 1s; 
+  position: relative;
+  animation: iconScaleBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+      forwards,
+    backgroundGlow 3s infinite alternate ease-in-out 1s;
   animation-delay: 0.5s;
-  opacity: 0; 
+  opacity: 0;
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Glass Row Dark (برای جزئیات صفحه موفقیت) */
+.glass-row-dark,
+.detail-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  backdrop-filter: blur(5px);
+  width: 100%;
+  text-align: right;
+  transition: all 0.2s ease-out;
+}
+.glass-row-dark:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
 }
 
-@keyframes iconScaleBounce {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-@keyframes backgroundGlow {
-  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-  100% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-}
-
-/* انیمیشن آبشاری (Staggered Animation) برای محتوا */
-.stagger-item {
-    animation-name: fadeInUp;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    opacity: 0;
-}
-
-.animate-delay-1 { animation-delay: 0.8s; }
-.animate-delay-2 { animation-delay: 0.9s; }
-.animate-delay-3 { animation-delay: 1.0s; }
-.animate-delay-4 { animation-delay: 1.1s; }
-
-/* Text Utilities */
-.text-main { color: var(--text-main) !important; }
-.text-sec { color: var(--text-secondary) !important; }
-
-/*
-=====================================================
-  SweetAlert2 (Swal) Dark Theme Integration (Unified)
-=====================================================
-*/
-
+/* --- SweetAlert2 Customization --- */
 .swal2-popup {
-    background-color: var(--bg-card) !important;
-    color: var(--text-main) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7) !important;
-    direction: rtl; 
-    padding: 1.5rem !important;
+  background: rgba(30, 30, 30, 0.9) !important;
+  border: 1px solid var(--border) !important;
+  backdrop-filter: blur(8px) !important;
+  color: var(--text-main) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7) !important;
+  padding: 1.5rem !important;
 }
-
 .swal2-title {
-    color: var(--text-main) !important;
-    font-weight: 700 !important;
-    font-size: 1.5rem !important; 
-    margin-bottom: 0.5rem !important;
+  color: var(--text-main) !important;
 }
-
 .swal2-html-container {
-    color: var(--text-secondary) !important;
-    line-height: 1.6 !important;
-    font-size: 1rem !important;
+  color: var(--text-secondary) !important;
 }
 
-/* استایل آیکون‌ها */
-.swal2-success-ring {
-    border-color: var(--accent) !important; /* آبی اصلی برای موفقیت */
+/* Toast Specifics */
+.swal2-toast-custom {
+  width: auto !important;
+  min-width: 300px;
+  padding: 0.75rem 1rem !important;
+  background: rgba(30, 30, 30, 0.95) !important;
+  backdrop-filter: blur(6px) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
-.swal2-success-line-long,
-.swal2-success-line-tip {
-    background-color: var(--accent) !important;
+.swal2-toast-custom .swal2-title {
+  font-size: 1rem !important;
+  margin: 0 !important;
+  font-weight: 500;
 }
-
-.swal2-icon.swal2-error {
-    border-color: var(--danger) !important;
-    color: var(--danger) !important;
+.swal2-toast-custom .swal2-icon.swal2-success {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.8rem !important;
+  margin: 0 0 0 0.5rem !important;
+  border-color: var(--accent) !important;
 }
-.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
-    background-color: var(--danger) !important;
+.swal2-toast-custom .swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: var(--accent) !important;
 }
-
-.swal2-icon.swal2-warning {
-    border-color: #ffc107 !important; /* زرد استاندارد برای Warning */
-    color: #ffc107 !important;
-}
-
-/* نوار پیشرفت تایمر (برای Success) */
 .swal2-timer-progress-bar {
-    background: var(--accent) !important;
+  background: var(--accent) !important;
 }
-
-/* استایل دکمه‌های Swal (همگام با btn-modern) */
-.swal2-actions button {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-    border-radius: 10px !important; /* هماهنگ با btn-modern */
-    padding: 0.6rem 1.5rem !important;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+.swal2-confirm.swal2-styled {
+  background-color: var(--accent) !important;
+  border-radius: 10px !important;
 }
-
-/* دکمه تأیید ( Confirm ) - با کلاس btn-primary-custom آبی می‌شود */
-/* دکمه لغو ( Cancel ) - با کلاس btn-modern ظاهر می‌شود */
 .swal2-cancel.swal2-styled {
-    background-color: var(--bg-card) !important;
-    color: var(--text-secondary) !important;
-    border: 1px solid var(--border) !important;
-}
-.swal2-cancel.swal2-styled:hover {
-    background-color: var(--bg-card-hover) !important;
-    border-color: var(--accent) !important;
-    color: var(--text-main) !important;
-}
-/*
-=====================================================
-  Success Page - بهبود یافته
-=====================================================
-*/
-
-.success-page {
-  /* پس‌زمینه همچنان دارک و جذاب */
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  background-color: var(--bg-card) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
 }
 
-.success-card {
-  /* کارت شیشه‌ای با لبه‌های گردتر */
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 3rem 2rem;
-  text-align: center;
-  max-width: 450px;
-  width: 100%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.success-icon {
-  width: 90px;
-  height: 90px;
-  /* استفاده از رنگ اصلی (accent) برای آیکون */
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 2rem;
-  color: white;
-  font-size: 2.5rem;
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-  
-  /* انیمیشن جدید: پرش و درخشش */
-  animation: iconScaleBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
-             backgroundGlow 2s ease-out infinite 1s; 
-  animation-delay: 0.5s;
-  opacity: 0; 
-}
-
-/* NEW: استایل کارت‌های جزئیات سفارش (Glass Row Dark) */
-.glass-row-dark {
-    background: rgba(255, 255, 255, 0.05); /* پس‌زمینه کمی روشن‌تر برای خوانایی بهتر */
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 0.75rem;
-    transition: all 0.2s ease-out;
-    text-align: right; /* راست‌چین بودن محتوا */
-}
-
-.glass-row-dark:hover {
-    background: rgba(255, 255, 255, 0.08); 
-    border-color: var(--accent);
-}
-
-
-/* --- Keyframe Animations --- */
+/* --- Animations --- */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes iconScaleBounce {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes backgroundGlow {
-  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-  100% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  0% {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.8);
+  }
 }
 
-/* انیمیشن آبشاری (Staggered Animation) برای محتوا */
-.stagger-item {
-    animation-name: fadeInUp;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    opacity: 0;
-}
-
-/* افزایش تعداد تأخیرها */
-.animate-delay-1 { animation-delay: 0.8s; } /* عنوان */
-.animate-delay-2 { animation-delay: 0.9s; } /* زیرعنوان */
-.animate-delay-3 { animation-delay: 1.0s; } /* جزئیات اول */
-.animate-delay-4 { animation-delay: 1.1s; } /* جزئیات دوم */
-.animate-delay-5 { animation-delay: 1.2s; } /* دکمه‌ها */
-/*
-=====================================================
-  Success Page - بهبود یافته و متحرک
-=====================================================
-*/
-
-.success-page {
-  /* پس‌زمینه همچنان دارک و جذاب */
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.success-card {
-  /* کارت شیشه‌ای با لبه‌های گردتر */
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 3rem 2rem;
-  text-align: center;
-  max-width: 450px;
-  width: 100%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.success-icon {
-  width: 90px;
-  height: 90px;
-  /* استفاده از رنگ اصلی (accent) برای آیکون تیک */
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 2rem;
-  color: white;
-  font-size: 2.5rem;
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-  
-  /* انیمیشن جدید: پرش و درخشش */
-  animation: iconScaleBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
-             backgroundGlow 2s ease-out infinite 1s; 
-  animation-delay: 0.5s;
-  opacity: 0; 
-}
-
-/* NEW: استایل کارت‌های جزئیات سفارش (Glass Row Dark) */
-.glass-row-dark {
-    background: rgba(255, 255, 255, 0.05); /* پس‌زمینه کمی روشن‌تر برای خوانایی بهتر */
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 0.75rem;
-    transition: all 0.2s ease-out;
-    text-align: right; /* راست‌چین بودن محتوا */
-}
-
-.glass-row-dark:hover {
-    background: rgba(255, 255, 255, 0.08); 
-    border-color: var(--accent);
-}
-
-
-/* --- Keyframe Animations --- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes iconScaleBounce {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-@keyframes backgroundGlow {
-  /* این انیمیشن یک درخشش ملایم دور آیکون ایجاد می‌کند */
-  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-  100% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-}
-
-/* انیمیشن آبشاری (Staggered Animation) برای محتوا */
-.stagger-item {
-    animation-name: fadeInUp;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    opacity: 0;
-}
-
-/* تعریف زمان‌بندی تأخیرها */
-.animate-delay-1 { animation-delay: 0.8s; } 
-.animate-delay-2 { animation-delay: 0.9s; } 
-.animate-delay-3 { animation-delay: 1.0s; } 
-.animate-delay-4 { animation-delay: 1.1s; } 
-.animate-delay-5 { animation-delay: 1.2s; }
-/*
-=====================================================
-  Success Page - بهبود یافته و متحرک
-=====================================================
-*/
-
-.success-page {
-  /* پس‌زمینه همچنان دارک و جذاب */
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-dark) 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.success-card {
-  /* کارت شیشه‌ای با لبه‌های گردتر */
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 3rem 2rem;
-  text-align: center;
-  max-width: 450px;
-  width: 100%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.success-icon {
-  width: 90px;
-  height: 90px;
-  /* استفاده از رنگ اصلی (accent) برای آیکون تیک */
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 2rem;
-  color: white;
-  font-size: 2.5rem;
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-  
-  /* انیمیشن جدید: پرش و درخشش */
-  animation: iconScaleBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
-             backgroundGlow 2s ease-out infinite 1s; 
-  animation-delay: 0.5s;
-  opacity: 0; 
-}
-
-/* NEW: استایل کارت‌های جزئیات سفارش (Glass Row Dark) */
-.glass-row-dark {
-    background: rgba(255, 255, 255, 0.05); /* پس‌زمینه کمی روشن‌تر برای خوانایی بهتر */
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 0.75rem;
-    transition: all 0.2s ease-out;
-    text-align: right; /* راست‌چین بودن محتوا */
-}
-
-.glass-row-dark:hover {
-    background: rgba(255, 255, 255, 0.08); 
-    border-color: var(--accent);
-}
-
-
-/* --- Keyframe Animations --- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes iconScaleBounce {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-@keyframes backgroundGlow {
-  /* این انیمیشن یک درخشش ملایم دور آیکون ایجاد می‌کند */
-  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-  100% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-}
-
-/* انیمیشن آبشاری (Staggered Animation) برای محتوا */
-.stagger-item {
-    animation-name: fadeInUp;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    opacity: 0;
-}
-
-/* تعریف زمان‌بندی تأخیرها (به روز رسانی شده) */
-.animate-delay-1 { animation-delay: 0.8s; } /* عنوان */
-.animate-delay-2 { animation-delay: 0.9s; } /* زیرعنوان */
-.animate-delay-3 { animation-delay: 1.0s; } /* جزئیات (کد رهگیری) */
-.animate-delay-4 { animation-delay: 1.1s; } /* دکمه‌ها */
-/* animate-delay-5 حذف شد */
-/*
-=====================================================
-  Cart Item Specific Styles (for cartProduct.jsx)
-=====================================================
-*/
-
-.cart-item-image {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px; /* لبه‌های گرد برای هماهنگی با طراحی دارک */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    flex-shrink: 0; 
-}
-
-.cart-item-title {
-    font-size: 0.95rem; 
-    line-height: 1.3;
-}
-
-/* استایل دکمه حذف (لینک استایل) */
-.btn-remove-cart {
-    background: transparent !important;
-    border: none !important;
-    color: var(--danger) !important; /* استفاده از متغیر خطر (قرمز) */
-    padding: 0 !important;
-    font-size: 0.85rem !important; /* اندازه کوچک */
-    text-decoration: none !important;
-    opacity: 0.75; /* شفافیت پیش‌فرض */
-    transition: opacity 0.2s ease, transform 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
-.btn-remove-cart:hover {
-    opacity: 1; /* شفافیت کامل در هاور */
-    color: var(--danger) !important;
-    text-decoration: none !important; 
-    transform: translateY(-1px); /* افکت کوچک در هاور */
-}
-.success-icon {
-  width: 90px;
-  height: 90px;
-  /* استفاده از رنگ اصلی (accent) برای آیکون تیک */
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 2rem;
-  color: white;
-  font-size: 2.5rem;
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-  
-  /* 👈 اصلاح شده: این خط کلیدی است */
-  /* انیمیشن جدید: پرش و درخشش */
-  animation: iconScaleBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; 
-  animation-delay: 0.5s;
-  opacity: 0; 
-  
-  /*
-    توجه: انیمیشن backgroundGlow (درخشش دائمی) را حذف کردیم 
-    چون ممکن است با opacity در تداخل باشد. اگر می‌خواهید آن را برگردانید،
-    فقط باید opacity را از آن جدا کنید. 
-    در حال حاضر، تمرکز روی اجرای iconScaleBounce است که opacity را به 1 می‌رساند.
-  */
-}
-
-/* انیمیشن iconScaleBounce که opacity را به 1 می‌رساند */
-@keyframes iconScaleBounce {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); }
-}
-/*
-=====================================================
-  Media Queries (ریسپانسیو کردن استایل‌های سفارشی)
-=====================================================
-*/
-
-/* --- Mobile / Small Devices (حداکثر 767.98px) --- */
+/* --- Responsive --- */
 @media (max-width: 767.98px) {
-    
-    /* Navbar - کوچک کردن عنوان و المان‌های Nav */
-    .navbar-glass h3 {
-        font-size: 1.1rem !important; 
-    }
-    
-    /* Product Card - کوتاه کردن ارتفاع تصویر و پدینگ */
-    .card-img-top {
-        height: 180px; /* ارتفاع تصویر محصول روی موبایل کمتر شود */
-    }
-    
-    .card-body {
-        padding: 1rem !important; /* پدینگ کارت کمتر شود */
-    }
+  .card-img-top {
+    height: 180px;
+  }
+  .card-body {
+    padding: 1rem !important;
+  }
 
-    /* Product Card - کاهش ترنسفورم هاور در موبایل */
-    .custom-card:hover {
-        transform: translateY(-5px) scale(1.01); 
-        box-shadow: var(--shadow); /* سایه ساده‌تر */
-    }
+  .success-card {
+    padding: 2rem 1.5rem;
+  }
+  .success-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .success-title {
+    font-size: 1.5rem !important;
+  }
 
-    /* --- Success Page - بهینه‌سازی برای موبایل --- */
-    .success-content-wrapper {
-        padding: 0 1rem; 
-    }
-    
-    .success-icon {
-        width: 70px; /* آیکون کوچکتر */
-        height: 70px;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-    
-    .success-title {
-        font-size: 1.4rem !important; /* عنوان کوچکتر */
-    }
-    
-    .success-subtitle {
-        font-size: 0.9rem !important;
-    }
-    
-    .glass-row-dark {
-        padding: 0.8rem 1rem; /* پدینگ کمتر برای کد رهگیری */
-    }
+  .swal2-popup {
+    width: 90% !important;
+  }
+} /* src/index.css - بخش مربوط به SweetAlert2 Toast */
 
-    /* SweetAlert2 - بهینه‌سازی اندازه پاپ‌آپ */
-    .swal2-popup {
-        width: 90% !important; /* عرض بیشتر در موبایل */
-        padding: 1rem !important;
-    }
-    
-    .swal2-title {
-        font-size: 1.2rem !important; 
-    }
-    
-    .swal2-actions button {
-        padding: 0.5rem 1rem !important; /* دکمه‌های کوچکتر */
-        font-size: 0.9rem !important;
-    }
-}
-/*
-=====================================================
-  Navbar Brand Clickable
-=====================================================
-*/
+/* ... (کدهای CSS قبل از این بخش دست‌نخورده باقی می‌مانند) ... */
 
-.navbar-brand-clickable {
-    cursor: pointer;
-    transition: opacity 0.2s ease;
+/* Toast Specifics */
+.swal2-toast-custom {
+  width: auto !important;
+  min-width: 300px;
+  padding: 0.75rem 1rem !important;
+  background: rgba(30, 30, 30, 0.95) !important;
+  backdrop-filter: blur(6px) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.navbar-brand-clickable:hover {
-    opacity: 0.8;
+/* 💡 خطوط اصلاح شده: مخفی کردن آیکون و عنوان پیش‌فرض SweetAlert */
+.swal2-toast-custom .swal2-title,
+.swal2-toast-custom .swal2-icon.swal2-success {
+  display: none !important;
 }
+/* تعریف استایل برای عنوان و متن درون HTML سفارشی */
+.swal2-toast-custom .text-start .swal2-title {
+  display: block !important;
+  font-size: 1rem !important;
+  margin: 0 !important;
+  font-weight: 500;
+  color: var(--text-main);
+}
+.swal2-toast-custom .text-start .swal2-text {
+  display: block !important;
+  font-size: 0.8rem !important;
+  margin-top: 2px;
+}
+.swal2-timer-progress-bar {
+  background: var(--accent) !important;
+}
+
+/* ... (کدهای CSS بعد از این بخش دست‌نخورده باقی می‌مانند) ... */
+/* src/index.css - بخش مربوط به SweetAlert2 Toast */
+
+/* ... (کدهای CSS قبل از این بخش دست‌نخورده باقی می‌مانند) ... */
+
+/* --- SweetAlert2 Customization --- */
+.swal2-popup {
+  background: rgba(30, 30, 30, 0.9) !important;
+  border: 1px solid var(--border) !important;
+  backdrop-filter: blur(8px) !important;
+  color: var(--text-main) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7) !important;
+  padding: 1.5rem !important;
+}
+.swal2-title { color: var(--text-main) !important; }
+.swal2-html-container { color: var(--text-secondary) !important; }
+
+/* Toast Specifics */
+.swal2-toast-custom {
+  width: auto !important;
+  min-width: 300px;
+  padding: 0.75rem 1rem !important;
+  background: rgba(30, 30, 30, 0.95) !important;
+  backdrop-filter: blur(6px) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+/* 💡 استایل‌دهی مجدد به عنوان پیش‌فرض */
+.swal2-toast-custom .swal2-title {
+  display: block !important;
+  font-size: 1rem !important;
+  margin: 0 !important;
+  font-weight: 500;
+  color: var(--text-main) !important;
+  padding: 0 0 0 10px; /* فاصله از آیکون */
+  text-align: right; 
+}
+/* 💡 استایل‌دهی مجدد به آیکون پیش‌فرض */
+.swal2-toast-custom .swal2-icon.swal2-success {
+  display: flex !important; /* نمایش آیکون */
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.8rem !important;
+  margin: 0 !important; 
+  border-color: var(--accent) !important;
+}
+.swal2-toast-custom .swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: var(--accent) !important;
+}
+/* تضمین ترتیب صحیح در RTL */
+.swal2-toast-custom.swal2-rtl .swal2-header {
+    flex-direction: row-reverse;
+}
+.swal2-toast-custom.swal2-rtl .swal2-icon {
+    margin-right: 0.6em; /* فاصله مناسب در راستای RTL */
+    margin-left: 0;
+}
+.swal2-timer-progress-bar { background: var(--accent) !important; }
+.swal2-confirm.swal2-styled {
+  background-color: var(--accent) !important;
+  border-radius: 10px !important;
+}
+.swal2-cancel.swal2-styled {
+  background-color: var(--bg-card) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+}
+
+/* ... (کدهای CSS بعد از این بخش دست‌نخورده باقی می‌مانند) ... *//* src/index.css - بخش مربوط به SweetAlert2 Toast */
+
+/* ... (کدهای CSS قبل از این بخش دست‌نخورده باقی می‌مانند) ... */
+
+/* Toast Specifics */
+.swal2-toast-custom {
+  width: auto !important;
+  min-width: 300px;
+  padding: 0.75rem 1rem !important;
+  background: rgba(30, 30, 30, 0.95) !important;
+  backdrop-filter: blur(6px) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* 💡 اصلاح فاصله: تنظیم جهت برای RTL و فضای داخلی */
+.swal2-toast-custom .swal2-header {
+    display: flex !important;
+    flex-direction: row-reverse; /* آیکون در سمت چپ، متن در سمت راست */
+    align-items: center;
+    padding: 0 !important;
+}
+
+/* 💡 اصلاح آیکون: پر کردن دایره و سفید کردن تیک */
+.swal2-toast-custom .swal2-icon.swal2-success {
+  display: flex !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.8rem !important;
+  margin: 0 !important; 
+  /* پر کردن دایره با رنگ Accent و سفید کردن تیک */
+  border-color: var(--accent) !important;
+  background-color: var(--accent) !important; 
+}
+.swal2-toast-custom .swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: #fff !important; /* تیک سفید */
+}
+
+/* Title (متن Alert در سمت راست) */
+.swal2-toast-custom .swal2-title {
+  display: block !important;
+  font-size: 1rem !important;
+  margin: 0 !important; 
+  font-weight: 500;
+  color: var(--text-main) !important;
+  text-align: right; 
+  /* 💡 تنظیم فاصله: ایجاد فضای 10 پیکسلی بین متن و آیکون */
+  margin-left: 10px !important; 
+}
+
+/* ... (ادامه کدهای CSS بدون تغییر) ... *//* src/index.css - بخش مربوط به SweetAlert2 Toast */
+
+/* ... (کدهای قبلی) ... */
+
+/* Toast Specifics */
+.swal2-toast-custom {
+  /* ... (تنظیمات اندازه و پس‌زمینه) ... */
+}
+
+/* 💡 اصلاح فاصله: تنظیم جهت برای RTL و فضای داخلی */
+.swal2-toast-custom .swal2-header {
+    display: flex !important;
+    flex-direction: row-reverse; /* آیکون در سمت چپ، متن در سمت راست */
+    align-items: center;
+    padding: 0 !important;
+}
+
+/* 💡 اصلاح آیکون: پر کردن دایره و سفید کردن تیک */
+.swal2-toast-custom .swal2-icon.swal2-success {
+  display: flex !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.8rem !important;
+  margin: 0 !important; 
+  background-color: var(--accent) !important; /* پر کردن دایره با رنگ اصلی */
+  border-color: var(--accent) !important;
+}
+.swal2-toast-custom .swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: #fff !important; /* تیک سفید */
+}
+
+/* Title (متن Alert در سمت راست) */
+.swal2-toast-custom .swal2-title {
+  /* ... (تنظیمات فونت) ... */
+  text-align: right; 
+  margin-left: 10px !important; /* 👈 فاصله 10 پیکسلی بین متن و آیکون */
+}
+
+/* ... (کدهای بعدی) ... */

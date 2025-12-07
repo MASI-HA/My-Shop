@@ -1,69 +1,75 @@
+// src/pages/Success.jsx
+
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-// حذف آیکون BsCurrencyDollar چون مبلغ کل حذف شده است
-import { BsCheckCircleFill, BsTagFill } from "react-icons/bs"; 
-import { useContext } from "react";
-import { CartContext } from "../Context/CartContext";
+import { BsCheckCircleFill, BsBagCheckFill } from "react-icons/bs";
+import { useState } from "react";
 
 function Success() {
   const navigate = useNavigate();
-  const cart = useContext(CartContext);
+  const trackingCode = "#SH-1234-ABCD";
+  const [isLoading, setIsLoading] = useState(false);
 
-  const trackingCode = "SH-1234-ABCD"; 
-  
-  // اطمینان از خالی شدن سبد پس از موفقیت
-  if (cart.items.length > 0) {
-    cart.clearCart();
+  const handleNavigate = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      navigate("/");
+    }, 800);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="success-page d-flex flex-column align-items-center justify-content-center">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        <h4 className="text-white mt-3">در حال انتقال به فروشگاه...</h4>
+      </div>
+    );
   }
-
-  const hasTrackingCode = trackingCode; 
 
   return (
     <div className="success-page">
       <div className="success-card">
-        
-        {/* ICON - انیمیشن iconScaleBounce */}
-        <div className="success-icon">
-          <BsCheckCircleFill size={36} />
+        {/* LOGO */}
+        <div className="d-flex align-items-center gap-2 mb-4">
+          <BsBagCheckFill size={30} style={{ color: "var(--accent)" }} />
+          <span className="fw-bold fs-5" style={{ color: "var(--accent)" }}>
+            My.Shop
+          </span>
         </div>
 
-        {/* TITLE - انیمیشن تأخیر ۱ */}
-        <h1 className="success-title stagger-item animate-delay-1 fs-3 fw-bold text-white mb-2">
-          خرید شما با موفقیت ثبت شد
+        {/* ICON */}
+        <div className="success-icon icon-glow-bounce mb-3">
+          <BsCheckCircleFill />
+        </div>
+
+        {/* TITLE */}
+        <h1 className="success-title fs-2 fw-bold text-white mb-2 text-center">
+          سفارش شما ثبت شد!
         </h1>
 
-        {/* SUBTITLE - انیمیشن تأخیر ۲ */}
-        <p className="success-subtitle stagger-item animate-delay-2 text-sec mb-4">
-          کد رهگیری سفارش شما در زیر نمایش داده شده است.
+        {/* SUBTITLE */}
+        <p className="success-subtitle text-sec mb-5 text-center">
+          از خرید شما متشکریم. سفارش شما با موفقیت ثبت شد.
         </p>
-        
-        {/* --- DETAILS SECTION (فقط کد رهگیری) --- */}
-        {hasTrackingCode && (
-          <div className="details-section mb-4">
-            
-            {/* کد رهگیری - انیمیشن تأخیر ۳ */}
-            <div className="glass-row-dark d-flex align-items-center justify-content-between stagger-item animate-delay-3">
-              <div className="d-flex align-items-center gap-3">
-                <BsTagFill size={20} className="text-accent" />
-                <span className="text-sec fw-bold">کد رهگیری</span>
-              </div>
-              <code className="text-main fw-bold">{trackingCode}</code>
-            </div>
 
-            {/* مبلغ کل حذف شد */}
+        {/* DETAIL BOX */}
+        <div className="detail-box mb-4">
+          <div className="d-flex justify-content-between mb-2">
+            <span className="text-sec small">کد پیگیری</span>
+            <span className="fw-bold text-white">{trackingCode}</span>
           </div>
-        )}
+        </div>
 
-        {/* ACTIONS - انیمیشن تأخیر ۴ */}
-        <div className="success-actions d-flex flex-column gap-3 justify-content-center stagger-item animate-delay-4">
+        {/* ACTIONS */}
+        <div className="success-actions d-flex flex-column justify-content-center w-100">
           <Button
-            className="btn-modern btn-primary-custom w-100 py-2"
-            onClick={() => navigate("/")}
+            className="btn-modern btn-primary-custom btn-lg w-100 mb-3"
+            onClick={handleNavigate}
           >
             بازگشت به فروشگاه
           </Button>
-
-          {/* دکمه مشاهده سوابق سفارش‌ها حذف شد */}
         </div>
       </div>
     </div>
