@@ -46,8 +46,8 @@ const productList = [
   {
     id: "8",
     title: "Airpod",
-    price: 45000000,
-    image: "/public/image/airpod.jpg.jpg",
+    price: 6700000,
+    image: "image/airpod.jpg.jpg",
   },
 ];
 
